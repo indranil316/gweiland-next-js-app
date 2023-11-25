@@ -1,6 +1,12 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { config } from '@fortawesome/fontawesome-svg-core';
+import Head from "next/head";
+import '@fortawesome/fontawesome-svg-core/styles.css';
+config.autoAddCss = false
+import './styles/globals.scss'
+
+import Navbar from '@/components/navbar';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +22,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <Head>
+        <link rel="stylesheet" type="text/css" charSet="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" /> 
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+      </Head>
+      <body className={inter.className}>
+        <Navbar/>
+        {children}
+      </body>
     </html>
   )
 }
